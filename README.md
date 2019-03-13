@@ -4,7 +4,7 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 [//]: # (Image References)
 [image1]: ./results/0_initial_screen.png "Initial Screen"
-[image2]: ./results/1_low_cte_speed_2_5_straight_road "Low CTE straight road"
+[image2]: ./results/1_low_cte_speed_2_5_straight_road.png "Low CTE straight road"
 [image3]: ./results/2_speed_4_before_left_curve.png "left curve 1"
 [image4]: ./results/3_speed_6_before_left_curve.png "left curve 2"
 [image5]: ./results/4_speed_12_left_curve.png "left curve 3"
@@ -12,7 +12,7 @@ Self-Driving Car Engineer Nanodegree Program
 [image7]: ./results/6_speed_18_right_curve.png "right curve 2"
 [image8]: ./results/7_speed_16_after_turn.png "right curve 3"
 [image9]: ./results/9_recording.MOV "Movie"
-[image10]: ./results/0_command_line_log_low_cte.png "Command line"
+[image10]: ./results/10_command_line_log_low_cte.png "Command line"
 
 ### Goals
 The goal of this project is to build a PID (proportional, integral, derivative) controller for a car and simulate the car around a track. The car has to stay in lane, use the PID control logic to properly negotiate the turns on the road by turning left and right as requried and complete a complete loop.
@@ -38,17 +38,19 @@ straight road means low CTE and low steer_value and throttle (speed) values.
 
 In the video, we can see that during  a sharp right turn -> stright road -> left turn -> straight scenario, the car velocity goes from 12 mph -> 18 mph -> 10 mph -> 24 mph - 15 mph. This is all due to the CTE feedback from the simualtor.
 
-![video][image9]
+![car_video][image9]
 
 #### Describe how the final hyperparameters were chosen.
 The final parameters were mostly chosen by trial and error observing the behavior of the car and going through the lectures to understand the contribution of each of the parameters Kp, Kd and Ki. I was able to determine that the car can be tuned without the use of twiddle for this project. I did try to implement some code that roughly tries to mimic twiddle but was not able to notice the differences of using this.
 
 #### Behavior of the car PID controller on a straight road
 When the road is straight, the CTE is very low and that results in a small steer_value and throttle value. Due to this the car slows down considerably to 2.5 mph.
-![Low CTE straight road][image2]
+
+![low cte - straight road][image2]
 
 #### Behavior of the car PID controller at a left curve
-The car approaches a left curve with 4 mph and as the curve increases, the CTE goes up and the the resulting PD values increase as well. Due to this the steer_value and throttle value increase. The car steers more and also moves faster to upto 12 mph at the peak of the turn
+The car approaches a left curve with 4 mph and as the curve increases, the CTE goes up and the the resulting PD values increase as well. Due to this the steer_value and throttle value increase. The car steers more and also moves faster to upto 12 mph at the peak of the turn.
+
 ![left curve 1][image3]
 
 ![left curve 2][image4]
@@ -57,12 +59,12 @@ The car approaches a left curve with 4 mph and as the curve increases, the CTE g
 
 #### Behavior of the car PID controller at a right curve
 Similarly for an sharp right turn, the speed increases from 11 mph to 18 mph at the peak and then settles at 16 mph.
+
 ![right curve 1][image6]
 
 ![right curve 2][image7]
 
 ![right curve 3][image8]
-
 
 
 #### Code review
